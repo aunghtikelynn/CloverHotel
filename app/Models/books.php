@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class books extends Model
+{
+    use HasFactory;
+    use SoftDeletes;
+    protected $table = 'books';
+    protected $fillable = [
+        'name',
+        'phone',
+        'date',
+        'qty',
+        'total',
+        'room_id',
+        'service_id',
+        'payment_id'
+    ];
+}
