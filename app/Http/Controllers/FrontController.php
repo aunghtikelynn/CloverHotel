@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Room;
+
 
 class FrontController extends Controller
 {
@@ -23,7 +25,14 @@ class FrontController extends Controller
 
     public function room()
     {
-        return view('front.room');
+        $rooms = Room::all();
+        return view('front.room',compact('rooms'));
+    }
+
+    public function roomDetail($id)
+    {
+        $room = Room::find($id);
+        return view('front.room-detail',compact('room'));
     }
 
     public function contact()

@@ -6,6 +6,8 @@ Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('i
 Route::get('/about', [App\Http\Controllers\FrontController::class, 'about'])->name('about');
 Route::get('/service', [App\Http\Controllers\FrontController::class, 'service'])->name('service');
 Route::get('/room',[App\Http\Controllers\FrontController::class, 'room'])->name('room');
+Route::get('/room-detail/{id}',[App\Http\Controllers\FrontController::class, 'roomDetail'])->name('room-detail');
+
 Route::get('/contact',[App\Http\Controllers\FrontController::class, 'contact'])->name('contact');
 Route::get('/team',[App\Http\Controllers\FrontController::class, 'team'])->name('team');
 Route::get('/testimonial',[App\Http\Controllers\FrontController::class, 'testimonial'])->name('testimonial');

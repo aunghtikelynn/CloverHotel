@@ -6,19 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class books extends Model
+class Service extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'books';
+    protected $table = 'services';
     protected $fillable = [
         'name',
-        'phone',
-        'date',
-        'qty',
-        'total',
-        'room_id',
-        'service_id',
-        'payment_id'
+        'price',
     ];
 }
