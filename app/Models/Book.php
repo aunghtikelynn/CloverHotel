@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Book extends Model
 {
     use HasFactory;
@@ -18,7 +19,6 @@ class Book extends Model
         'qty',
         'total',
         'room_id',
-        'service_id',
         'payment_id'
     ];
 }

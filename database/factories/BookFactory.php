@@ -23,7 +23,6 @@ class BookFactory extends Factory
             'qty'=>$this->faker->numberBetween(1, 3),
             'total'=>$this->faker->numberBetween(300000, 900000),
             'room_id'=>rand(1, 20),
-            'service_id'=>rand(1, 6),
             'payment_id'=>rand(1, 5)
         ];
     }

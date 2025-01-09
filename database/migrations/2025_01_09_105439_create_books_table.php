@@ -23,11 +23,6 @@ return new class extends Migration
                 ->references('id')
                 ->on('rooms')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')
-                ->references('id')
-                ->on('services')
-                ->onDelete('cascade');
             $table->unsignedBigInteger('payment_id');
             $table->foreign('payment_id')
                 ->references('id')
@@ -36,6 +31,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
     }
 
     /**

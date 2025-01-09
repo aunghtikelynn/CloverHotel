@@ -11,13 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('logo');
+            $table->string('image');
+            $table->string('image-1');
+            $table->string('image-2');
+            $table->string('image-3');
+            $table->string('image-4');
+            $table->string('type_id');
+            $table->text('description');
+            $table->string('price');
             $table->softDeletes();
             $table->timestamps();
         });
+
     }
 
     /**
@@ -25,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('rooms');
     }
 };
