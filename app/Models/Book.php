@@ -18,7 +18,16 @@ class Book extends Model
         'date',
         'qty',
         'total',
+        'payment_slip',
         'room_id',
         'payment_id'
     ];
+
+    public function room(){
+        return $this->belongsTo(Room::class);
+    }
+
+    public function payment(){
+        return $this->belongsTo(Payment::class);
+    }
 }

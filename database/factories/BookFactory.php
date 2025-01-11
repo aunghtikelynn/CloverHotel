@@ -22,6 +22,7 @@ class BookFactory extends Factory
             'date'=>$this->faker->date,
             'qty'=>$this->faker->numberBetween(1, 3),
             'total'=>$this->faker->numberBetween(300000, 900000),
+            'payment_slip'=>$this->faker->imageUrl,
             'room_id'=>rand(1, 20),
             'payment_id'=>rand(1, 5)
         ];

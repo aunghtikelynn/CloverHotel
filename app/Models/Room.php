@@ -14,12 +14,17 @@ class Room extends Model
     protected $fillable = [
         'name',
         'image',
-        'image-1',
-        'image-2',
-        'image-3',
-        'image-4',
+        'image_1',
+        'image_2',
+        'image_3',
+        'image_4',
         'type_id',	
         'description',
         'price',
     ];
+
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
+
 }

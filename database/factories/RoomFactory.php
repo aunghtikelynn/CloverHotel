@@ -19,11 +19,11 @@ class RoomFactory extends Factory
         return [
             'name'=>$this->faker->word,
             'image'=>$this->faker->imageUrl,
-            'image-1'=>$this->faker->imageUrl,
-            'image-2'=>$this->faker->imageUrl,
-            'image-3'=>$this->faker->imageUrl,
-            'image-4'=>$this->faker->imageUrl,
-            'type_id'=>$this->faker->word,
+            'image_1'=>$this->faker->imageUrl,
+            'image_2'=>$this->faker->imageUrl,
+            'image_3'=>$this->faker->imageUrl,
+            'image_4'=>$this->faker->imageUrl,
+            'type_id'=>rand(1, 5),
             'description'=>$this->faker->paragraph,
             'price'=>$this->faker->numberBetween(300000, 900000),
         ];

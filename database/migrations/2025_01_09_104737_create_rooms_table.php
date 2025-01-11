@@ -15,11 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->string('image-1');
-            $table->string('image-2');
-            $table->string('image-3');
-            $table->string('image-4');
-            $table->string('type_id');
+            $table->string('image_1');
+            $table->string('image_2');
+            $table->string('image_3');
+            $table->string('image_4');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')
+                ->references('id')
+                ->on('types')
+                ->onDelete('cascade');
             $table->text('description');
             $table->string('price');
             $table->softDeletes();

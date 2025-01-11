@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
-
+use App\Models\Type;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -25,7 +26,8 @@ class FrontController extends Controller
 
     public function room()
     {
-        $rooms = Room::all();
+        $rooms = Room::orderBy('id','DESC')->paginate(6);
+
         return view('front.room',compact('rooms'));
     }
 

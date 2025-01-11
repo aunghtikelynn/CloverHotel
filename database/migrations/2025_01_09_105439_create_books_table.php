@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('qty');
             $table->string('total');
+            $table->string('payment_slip');
             $table->unsignedBigInteger('room_id');
             $table->foreign('room_id')
                 ->references('id')

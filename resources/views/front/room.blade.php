@@ -83,6 +83,7 @@
                         <div class="p-4 mt-2">
                             <div class="d-flex justify-content-between mb-3">
                                 <h5 class="mb-0">{{$room->name}}</h5>
+                                <h4 class="mb-0">{{$room->type_id}}</h5>
                                 <div class="ps-2">
                                     <small class="fa fa-star text-primary"></small>
                                     <small class="fa fa-star text-primary"></small>
@@ -107,7 +108,7 @@
             @endforeach
             </div>
         </div>
-
+        {{$rooms->links()}}
     </div>
     <!-- Room End -->
 
@@ -153,7 +154,6 @@
         </div>
     </div>
     <!-- Testimonial End -->
-
 
         
 @endsection

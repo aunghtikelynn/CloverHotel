@@ -64,12 +64,29 @@
     </div>
     <!-- Booking End -->
 
-<div class="container p-5 m-5 justify-content-center">
-    <div class="col-12" >
-        <div class="row justify-content-center">
-            <div class="text-center">
-                <img class="w-75" src="{{$room->image}}" alt="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6 col-12 p-3 text-center">
+                <img src="{{$room->image}}" alt="" width="650" class="img-fluid rounded">
             </div>
+            <div class="col-xl-6 col-12">
+                <div class="row">
+                    <div class="col-6 p-3 text-center">
+                        <img src="{{$room->image_1}}" alt="" width="300" class="img-fluid rounded ">
+                    </div>
+                    <div class="col-6 p-3 text-center">
+                        <img src="{{$room->image_2}}" alt="" width="300" class="img-fluid rounded ">
+                    </div>
+                    <div class="col-6 p-3 text-center">
+                        <img src="{{$room->image_3}}" alt="" width="300" class="img-fluid rounded ">
+                    </div>
+                    <div class="col-6 p-3 text-center">
+                        <img src="{{$room->image_4}}" alt="" width="300" class="img-fluid rounded ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="p-4 mt-2 text-center">
                 <div class=" mb-3">
                     <div class="row text-center">
@@ -91,7 +108,7 @@
                     <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
                 </div>
                 <p class="text-body mb-3 ">{{$room->price}} / Night</p>
-                <p class="text-body mb-3">{{$room->service}}</p>
+                <p class="text-body mb-3">{{$room->type_id}}</p>
                 <p class="text-body mb-3">{{$room->description}}</p>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-sm btn-dark rounded py-2 px-5" href="">Book Now</a>
@@ -99,7 +116,6 @@
             </div>
         </div>
     </div>
-</div>
 
     <!-- Room Start -->
     <div class="container-xxl py-5">
