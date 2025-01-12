@@ -27,7 +27,6 @@ class FrontController extends Controller
     public function room()
     {
         $rooms = Room::orderBy('id','DESC')->paginate(6);
-
         return view('front.room',compact('rooms'));
     }
 

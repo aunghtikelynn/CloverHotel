@@ -82,8 +82,7 @@
                         </div>
                         <div class="p-4 mt-2">
                             <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">{{$room->name}}</h5>
-                                <h4 class="mb-0">{{$room->type_id}}</h5>
+                                <h4 class="mb-0">{{$room->name}}</h4>
                                 <div class="ps-2">
                                     <small class="fa fa-star text-primary"></small>
                                     <small class="fa fa-star text-primary"></small>
@@ -91,6 +90,9 @@
                                     <small class="fa fa-star text-primary"></small>
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <h6 class="mb-0">{{$room->type->name}}</h6>
                             </div>
                             <div class="d-flex mb-3">
                                 <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>

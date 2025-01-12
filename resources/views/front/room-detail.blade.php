@@ -108,7 +108,7 @@
                     <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
                 </div>
                 <p class="text-body mb-3 ">{{$room->price}} / Night</p>
-                <p class="text-body mb-3">{{$room->type_id}}</p>
+                <p class="text-body mb-3">{{$room->type->name}}</p>
                 <p class="text-body mb-3">{{$room->description}}</p>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-sm btn-dark rounded py-2 px-5" href="">Book Now</a>

@@ -13,6 +13,14 @@ Route::get('/team',[App\Http\Controllers\FrontController::class, 'team'])->name(
 Route::get('/testimonial',[App\Http\Controllers\FrontController::class, 'testimonial'])->name('testimonial');
 Route::get('/booking',[App\Http\Controllers\FrontController::class, 'booking'])->name('booking');
 
+Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
+    Route::get('/',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
+    Route::get('/charts',[App\Http\Controllers\Admin\DashboardController::class,'charts'])->name('charts');
+    Route::get('/tables',[App\Http\Controllers\Admin\DashboardController::class,'tables'])->name('tables');
+    Route::resource('types',App\Http\Controllers\Admin\TypeController::class);
+    Route::resource('rooms',App\Http\Controllers\Admin\RoomController::class);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
