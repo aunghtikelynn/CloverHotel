@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->string('date');
+            $table->string('from_date');
+            $table->string('to_date');
             $table->string('qty');
             $table->string('total');
             $table->string('payment_slip');

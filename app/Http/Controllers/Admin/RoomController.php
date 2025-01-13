@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\Type;
 use App\Http\Requests\RoomRequest;
 use App\Http\Requests\RoomUpdateRequest;
+use Illuminate\Support\Str;
 
 class RoomController extends Controller
 {
@@ -25,7 +26,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('admin.rooms.create');
+        $types = Type::all();
+        return view('admin.rooms.create',compact('types'));
     }
 
     /**
@@ -33,7 +35,41 @@ class RoomController extends Controller
      */
     public function store(RoomRequest $request)
     {
-        dd($request);
+        // dd($request); 
+        // var_dump($request);
+        $rooms = Room::create($request->all());
+        $file_name = Str::random(5).'.'.$request->image->extension();
+        $upload = $request->image->move(public_path('images/rooms/'),$file_name);
+        if($upload){
+            $rooms->image = "/images/rooms/".$file_name;
+        }
+
+        $file_name1 = Str::random(5).'.'.$request->image_1->extension();
+        $upload = $request->image_1->move(public_path('images/rooms/'),$file_name1);
+        if($upload){
+            $rooms->image_1 = "/images/rooms/".$file_name1;
+        }
+
+        $file_name2 = Str::random(5).'.'.$request->image_2->extension();
+        $upload = $request->image_2->move(public_path('images/rooms/'),$file_name2);
+        if($upload){
+            $rooms->image_2 = "/images/rooms/".$file_name2;
+        }
+
+        $file_name3 = Str::random(5).'.'.$request->image_3->extension();
+        $upload = $request->image_3->move(public_path('images/rooms/'),$file_name3);
+        if($upload){
+            $rooms->image_3 = "/images/rooms/".$file_name3;
+        }
+
+        $file_name4 = Str::random(5).'.'.$request->image_4->extension();
+        $upload = $request->image_4->move(public_path('images/rooms/'),$file_name4);
+        if($upload){
+            $rooms->image_4 = "/images/rooms/".$file_name4;
+        }
+        $rooms->save();
+
+        return redirect()->route('backend.rooms.index');
     }
 
     /**

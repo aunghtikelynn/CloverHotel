@@ -55,7 +55,8 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$book->name}}</td>
                                 <td>{{$book->phone}}</td>
-                                <td>{{$book->date}}</td>
+                                <td>{{$book->from_date}}</td>
+                                <td>{{$book->to_date}}</td>
                                 <td>{{$book->qty}}</td>
                                 <td>{{$book->total}}</td>
                                 <td><img src="{{$book->payment_slip}}" alt=""></td>

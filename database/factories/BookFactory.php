@@ -19,7 +19,8 @@ class BookFactory extends Factory
         return [
             'name'=>$this->faker->word,
             'phone'=>$this->faker->phoneNumber,
-            'date'=>$this->faker->date,
+            'from_date'=>$this->faker->date,
+            'to_date'=>$this->faker->date,
             'qty'=>$this->faker->numberBetween(1, 3),
             'total'=>$this->faker->numberBetween(300000, 900000),
             'payment_slip'=>$this->faker->imageUrl,

@@ -15,7 +15,8 @@ class Book extends Model
     protected $fillable = [
         'name',
         'phone',
-        'date',
+        'from_date',
+        'to_date',
         'qty',
         'total',
         'payment_slip',

@@ -5,7 +5,7 @@
             <h1 class="mt-4">Payments</h1>
             
         </div>
-        <a href="" class="btn btn-primary float-end p-2">Create Payment</a>
+        <a href="{{route('backend.payments.create')}}" class="btn btn-primary float-end p-2">Create Payment</a>
         <ol class="breadcrumb mb-4 py-2">
             <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
             <li class="breadcrumb-item active">Payments</li>
@@ -44,7 +44,7 @@
                                 <td>{{$payment->name}}</td>
                                 <td><img src="{{$payment->logo}}" alt="" width="100"></td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{route('backend.payments.edit',$payment->id)}}" class="btn btn-sm btn-warning">Edit</a>
                                     <button class="btn btn-sm btn-danger delete" data-id="{{$payment->id}}">Delete</button>
                                 </td>
                             </tr>
