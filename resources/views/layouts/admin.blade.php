@@ -95,7 +95,12 @@
                     <span>Types</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('backend.payments.index')}}">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Payments</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('backend.books.index')}}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Books</span></a>
             </li>

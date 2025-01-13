@@ -19,6 +19,8 @@ Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/tables',[App\Http\Controllers\Admin\DashboardController::class,'tables'])->name('tables');
     Route::resource('types',App\Http\Controllers\Admin\TypeController::class);
     Route::resource('rooms',App\Http\Controllers\Admin\RoomController::class);
+    Route::resource('payments',App\Http\Controllers\Admin\PaymentController::class);
+    Route::resource('books',App\Http\Controllers\Admin\BookController::class);
 });
 
 Auth::routes();
