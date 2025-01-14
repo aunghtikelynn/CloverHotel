@@ -2,34 +2,30 @@
 @section('content')
     <div class="container-fluid px-4">
         <div class="my-3">
-            <h1 class="mt-4">Books</h1>
+            <h1 class="mt-4">Users</h1>
             
         </div>
-        <a href="" class="btn btn-primary float-end p-2">Create Book</a>
+        <a href="{{route('backend.users.create')}}" class="btn btn-primary float-end p-2">Create User</a>
         <ol class="breadcrumb mb-4 py-2">
             <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Books</li>
+            <li class="breadcrumb-item active">Users</li>
         </ol>
         
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Books List
+                Users List
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
-                    <thead>
+                <thead>
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>From Date</th>
-                            <th>To Date</th>
-                            <th>Qty</th>
-                            <th>Total</th>
-                            <th>Payment Slip</th>
-                            <th>Room</th>
-                            <th>Payment</th>
+                            <th>Profile</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -38,13 +34,9 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>From Date</th>
-                            <th>To Date</th>
-                            <th>Qty</th>
-                            <th>Total</th>
-                            <th>Payment Slip</th>
-                            <th>Room</th>
-                            <th>Payment</th>
+                            <th>Profile</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>#</th>
                         </tr>
                     </tfoot>
@@ -52,27 +44,23 @@
                         @php 
                             $i = 1;
                         @endphp
-                        @foreach($books as $book)
+                        @foreach($users as $user)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$book->name}}</td>
-                                <td>{{$book->phone}}</td>
-                                <td>{{$book->from_date}}</td>
-                                <td>{{$book->to_date}}</td>
-                                <td>{{$book->qty}}</td>
-                                <td>{{$book->total}}</td>
-                                <td><img src="{{$book->payment_slip}}" alt="" width="50"></td>
-                                <td>{{$book->room->name}}</td>
-                                <td><img src="{{$book->payment->logo}}" alt="" width="50"></td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->phone}}</td>
+                                <td><img src="{{$user->profile}}" alt="" width="100"></td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->role}}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                    <button class="btn btn-sm btn-danger delete" data-id="{{$book->id}}">Delete</button>
+                                    <a href="{{route('backend.users.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                    <button class="btn btn-sm btn-danger delete" data-id="{{$user->id}}">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{$books->links()}}
+                {{$users->links()}}
             </div>
         </div>
     </div>
@@ -108,7 +96,7 @@
                 // alert('hello');
                 let id = $(this).data('id');
                 // console.log(id);
-                $('#deleteForm').attr('action',`books/${id}`);
+                $('#deleteForm').attr('action',`users/${id}`);
                 $('#deleteModal').modal('show');
             })
         })

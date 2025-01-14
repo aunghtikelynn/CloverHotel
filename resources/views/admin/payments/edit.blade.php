@@ -17,7 +17,7 @@
             Edit Payment
         </div>
         <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{route('backend.payments.update',$payment->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="mb-3">

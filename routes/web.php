@@ -21,6 +21,7 @@ Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::resource('rooms',App\Http\Controllers\Admin\RoomController::class);
     Route::resource('payments',App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('books',App\Http\Controllers\Admin\BookController::class);
+    Route::resource('users',App\Http\Controllers\Admin\UserController::class);
 });
 
 Auth::routes();

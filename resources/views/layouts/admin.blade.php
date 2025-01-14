@@ -107,7 +107,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('backend.users.index')}}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Users</span></a>
             </li>
@@ -388,6 +388,7 @@
         </div>
     </div>
 
+    <script src="{{asset('admin-assets/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin-assets/js/jquery.min.js')}}"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('admin-assets/vendor/jquery/jquery.min.js')}}"></script>
