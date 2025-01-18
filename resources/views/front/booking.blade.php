@@ -106,6 +106,22 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="phone" placeholder="Your Phone">
+                                        <label for="phone">Your Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="select1">
+                                            <option value="1">1 Person</option>
+                                            <option value="2">2 Persons</option>
+                                            <option value="3">3 Persons</option>
+                                        </select>
+                                        <label for="select1">Select Person</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="checkin">Check In</label>
@@ -125,7 +141,7 @@
                                             <option value="3">Adult 3</option>
                                         </select>
                                         <label for="select1">Select Adult</label>
-                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">

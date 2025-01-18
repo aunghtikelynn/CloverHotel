@@ -11,7 +11,9 @@ class FrontController extends Controller
 {
     public function index()
     {
-        return view('front.index');
+        $rooms = Room::orderBy('id','DESC')->limit(3)->get();
+        $room_names = Room::all();
+        return view('front.index',compact('rooms','room_names'));
     }
 
     public function about()

@@ -109,8 +109,12 @@
                 </div>
             @endforeach
             </div>
+            <div class="mt-5">
+                {{$rooms->links()}}
+            </div>
+            
         </div>
-        {{$rooms->links()}}
+        
     </div>
     <!-- Room End -->
 

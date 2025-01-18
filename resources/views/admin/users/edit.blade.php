@@ -49,7 +49,7 @@
                             <input type="hidden" name="old_profile" id="" value="{{$user->profile}}"> 
                         </div>
                         <div class="tab-pane fade" id="new_profile-tab-pane" role="tabpanel" aria-labelledby="new_profile-tab" tabindex="0">
-                            <input type="file" accept="image/*" class="form-control my-3 @error('profile') is-invalid @enderror" value="{{old('profile')}}" id="profile" name="profile">
+                            <input type="file" accept="image/*" class="form-control my-3 @error('profile') is-invalid @enderror" id="profile" name="profile">
                         </div>
                     </div>
                     @error('profile')
