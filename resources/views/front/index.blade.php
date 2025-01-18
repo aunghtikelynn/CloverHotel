@@ -45,19 +45,18 @@
     <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="bg-white shadow" style="padding: 35px;">
-                <form action="">
+                <form action="{{route('booking')}}" method="get" enctype="multipart/form-data">
                     <div class="row g-2">
                         <div class="col-md-10">
                                 <div class="row g-2">
                                     <div class="col-md-3">
-                                        <div class="date" id="date1" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
+                                        <div class="date"data-target-input="nearest">
+                                            <input type="text" id="date1"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="date" id="date2" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
+                                        <div class="date" data-target-input="nearest">
+                                            <input type="text" id="date2" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -80,7 +79,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary w-100">Submit</button>
+                            <button class="btn btn-primary w-100" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>

@@ -53,8 +53,9 @@ class FrontController extends Controller
         return view('front.testimonial');
     }
 
-    public function booking()
+    public function booking(Request $request)
     {
-        return view('front.booking');
+        $date = array_merge($request->all());
+        return view('front.booking','date');
     }
 }
