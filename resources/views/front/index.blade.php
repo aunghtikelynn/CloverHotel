@@ -46,36 +46,37 @@
         <div class="container">
             <div class="bg-white shadow" style="padding: 35px;">
                 <form action="{{route('booking')}}" method="get" enctype="multipart/form-data">
+                @csrf
                     <div class="row g-2">
                         <div class="col-md-10">
-                                <div class="row g-2">
-                                    <div class="col-md-3">
-                                        <div class="date"data-target-input="nearest">
-                                            <input type="text" id="date1"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
-                                        </div>
+                            <div class="row g-2">
+                                <div class="col-md-3">
+                                    <div class="date"data-target-input="nearest">
+                                        <input type="text" id="date1" name="date1"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="date" data-target-input="nearest">
-                                            <input type="text" id="date2" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
-                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="date" data-target-input="nearest">
+                                        <input type="text" id="date2" name="date2" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
                                     </div>
-                                    <div class="col-md-3">
-                                        <select class="form-select">
-                                            <option value="" selected>Person</option>
-                                            <option value="1">1 Person</option>
-                                            <option value="2">2 Persons</option>
-                                            <option value="3">3 Persons</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <select class="form-select">
-                                            <option value="" selected>Room</option>
-                                            @foreach($room_names as $room_name)
-                                                <option value="{{$room_name->id}}">{{$room_name->name}}</option>
-                                            @endforeach
-                                            
-                                        </select>
-                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" name="person">
+                                        <option value="" selected>Person</option>
+                                        <option value="1">1 Person</option>
+                                        <option value="2">2 Persons</option>
+                                        <option value="3">3 Persons</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select " name="room">
+                                        <option value="" selected>Room</option>
+                                        @foreach($room_names as $room_name)
+                                            <option value="{{$room_name->id}}">{{$room_name->name}}</option>
+                                        @endforeach
+                                        
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-2">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Type;
+
 use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
@@ -55,7 +56,8 @@ class FrontController extends Controller
 
     public function booking(Request $request)
     {
-        $date = array_merge($request->all());
+        //$date = array_merge($request->all());
+        dd($request);
         return view('front.booking','date');
     }
 }
