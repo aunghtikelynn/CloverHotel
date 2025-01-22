@@ -114,29 +114,30 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1">
-                                            <option value="1">1 Person</option>
-                                            <option value="2">2 Persons</option>
-                                            <option value="3">3 Persons</option>
+                                            <option value="" selected>Person</option>
+                                            <option value="1" {{$data->person == "1" ? 'selected':''}}>1 Person</option>
+                                            <option value="2" {{$data->person == "2" ? 'selected':''}}>2 Persons</option>
+                                            <option value="3" {{$data->person == "3" ? 'selected':''}}>3 Persons</option>
                                         </select>
                                         <label for="select1">Select Person</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" value="date->date1" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
+                                        <input type="text" value="{{ $data->date1 }}" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="checkin">Check In</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date4" data-target-input="nearest">
-                                        <input type="text" value="date->date2" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
+                                        <input type="text" value="{{ $data->date2 }}" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
                                         <label for="checkout">Check Out</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="select1">
-                                            <option value="1">Adult 1</option>
+                                            <option value="1" >Adult 1</option>
                                             <option value="2">Adult 2</option>
                                             <option value="3">Adult 3</option>
                                         </select>
@@ -156,9 +157,10 @@
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <select class="form-select" id="select3">
-                                            <option value="1">Room 1</option>
-                                            <option value="2">Room 2</option>
-                                            <option value="3">Room 3</option>
+                                            <option value="" selected>Choose Room</option>
+                                            @foreach($room_names as $room_name)
+                                                <option value="{{$room_name->id}}" {{$data->room == $room->id ? 'selected':''}}>{{$room->name}}</option>
+                                            @endforeach   
                                         </select>
                                         <label for="select3">Select A Room</label>
                                         </div>

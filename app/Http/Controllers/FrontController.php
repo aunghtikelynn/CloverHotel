@@ -56,8 +56,9 @@ class FrontController extends Controller
 
     public function booking(Request $request)
     {
-        //$date = array_merge($request->all());
-        dd($request);
-        return view('front.booking','date');
+        $room_names = Room::all();
+        // dd($request);
+        // var_dump($request);
+        return view('front.booking','room_names');
     }
 }
