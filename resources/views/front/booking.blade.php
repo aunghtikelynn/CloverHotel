@@ -19,6 +19,7 @@
     <!-- Page Header End -->
 
 
+
     <!-- Booking Start -->
     <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
@@ -91,88 +92,69 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
-                        <form>
+                        <form id="bookForm" enctype="multipart/form-data">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" name="name"  id="name" placeholder="Your Name">
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="phone" placeholder="Your Phone">
+                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone">
                                         <label for="phone">Your Phone</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="select1">
+                                        <select class="form-select" name="person" id="person">
                                             <option value="" selected>Person</option>
-                                            <option value="1" {{$data->person == "1" ? 'selected':''}}>1 Person</option>
-                                            <option value="2" {{$data->person == "2" ? 'selected':''}}>2 Persons</option>
-                                            <option value="3" {{$data->person == "3" ? 'selected':''}}>3 Persons</option>
+                                            <option value="1" {{$person == "1" ? 'selected':''}}>1 Person</option>
+                                            <option value="2" {{$person == "2" ? 'selected':''}}>2 Persons</option>
+                                            <option value="3" {{$person == "3" ? 'selected':''}}>3 Persons</option>
                                         </select>
-                                        <label for="select1">Select Person</label>
+                                        <label for="person">Select Person</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" value="{{ $data->date1 }}" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
+                                        <input type="text" value="{{ $date1 }}" name="date1" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="checkin">Check In</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date4" data-target-input="nearest">
-                                        <input type="text" value="{{ $data->date2 }}" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
+                                        <input type="text" value="{{ $date2 }}" name="date2" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
                                         <label for="checkout">Check Out</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="select1">
-                                            <option value="1" >Adult 1</option>
-                                            <option value="2">Adult 2</option>
-                                            <option value="3">Adult 3</option>
-                                        </select>
-                                        <label for="select1">Select Adult</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="select2">
-                                            <option value="1">Child 1</option>
-                                            <option value="2">Child 2</option>
-                                            <option value="3">Child 3</option>
-                                        </select>
-                                        <label for="select2">Select Child</label>
-                                        </div>
-                                </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="select3">
+                                        <select class="form-select" id="room" name="room">
                                             <option value="" selected>Choose Room</option>
                                             @foreach($room_names as $room_name)
-                                                <option value="{{$room_name->id}}" {{$data->room == $room->id ? 'selected':''}}>{{$room->name}}</option>
+                                                <option value="{{$room_name->id}}" {{$room = $room_name->id ? 'selected':''}}>{{$room_name->name}}</option>
                                             @endforeach   
                                         </select>
-                                        <label for="select3">Select A Room</label>
+                                        <label for="room">Select A Room</label>
                                         </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control" placeholder="Special Request" name="message" id="message" style="height: 100px"></textarea>
                                         <label for="message">Special Request</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                                    <button class="btn btn-primary w-100 py-3" id="book-now" type="submit">Book Now</button>
                                 </div>
                             </div>
                         </form>
@@ -184,4 +166,22 @@
     <!-- Booking End -->
 
 
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#bookForm').on('submit',function(e){
+                e.preventDefault();
+                var formData = new FormData(this);
+                console.log(formData);
+            })
+        })
+    </script>
 @endsection

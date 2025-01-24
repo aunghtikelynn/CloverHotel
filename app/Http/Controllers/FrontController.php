@@ -58,7 +58,11 @@ class FrontController extends Controller
     {
         $room_names = Room::all();
         // dd($request);
-        // var_dump($request);
-        return view('front.booking','room_names');
+        //var_dump($request);
+        $date1 = $request->query('date1') ?? null;
+        $date2 = $request->query('date2') ?? null;
+        $person = $request->query('person') ?? null;
+        $room = $request->query('room') ?? null;
+        return view('front.booking',compact('room_names','date1','date2','person','room'));
     }
 }

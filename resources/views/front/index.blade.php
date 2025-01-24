@@ -45,7 +45,7 @@
     <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="bg-white shadow" style="padding: 35px;">
-                <form action="{{route('booking')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('booking')}}" method="get" enctype="multipart/form-data">
                 @csrf
                     <div class="row g-2">
                         <div class="col-md-10">

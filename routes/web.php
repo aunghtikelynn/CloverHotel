@@ -13,6 +13,8 @@ Route::get('/team',[App\Http\Controllers\FrontController::class, 'team'])->name(
 Route::get('/testimonial',[App\Http\Controllers\FrontController::class, 'testimonial'])->name('testimonial');
 Route::get('/booking',[App\Http\Controllers\FrontController::class, 'booking'])->name('booking');
 
+Route::post('book-now',[App\Http\Controllers\FrontController::class,'bookNow'])->name('bookNow');
+
 Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
     Route::get('/charts',[App\Http\Controllers\Admin\DashboardController::class,'charts'])->name('charts');
