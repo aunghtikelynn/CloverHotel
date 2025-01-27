@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Type;
+use App\Models\Payment;
+use App\Models\Book;
+use Carbon\Carbon;
+use App\Http\Requests\BookingRequest;
+use App\Http\Requests\BookNowRequest;
 
 use Illuminate\Support\Facades\Auth;
+
 
 class FrontController extends Controller
 {
@@ -64,5 +70,26 @@ class FrontController extends Controller
         $person = $request->query('person') ?? null;
         $room = $request->query('room') ?? null;
         return view('front.booking',compact('room_names','date1','date2','person','room'));
+    }
+
+    public function bookNow(BookNowRequest $request)
+    {
+        $payments = Payment::all();
+        // dd($request);
+        // $dataArray = json_decode($request);
+        // var_dump($request);
+        $name = $request->input('name');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
+        $person = $request->input('person');
+        $date1 = Carbon::parse($request->input('date1'));
+        $date2 = Carbon::parse($request->input('date2'));
+        $room = $request->input('room');
+        $message = $request->input('message');
+
+
+
+
+        return view('front.book-now',compact('payments','data'));
     }
 }

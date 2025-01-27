@@ -92,65 +92,112 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
-                        <form id="bookForm" enctype="multipart/form-data">
+                        <form action="{{route('bookNow')}}" method="post" id="bookForm" enctype="multipart/form-data">
                             @csrf
+                           
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" name="name"  id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" name="name"  id="name" placeholder="Your Name">
                                         <label for="name">Your Name</label>
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
+                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control @error ('email') is-invalid @enderror" value="{{old('email')}}" name="email" id="email" placeholder="Your Email">
                                         <label for="email">Your Email</label>
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone">
+                                        <input type="text" class="form-control @error ('phone') is-invalid @enderror" value="{{old('phone')}}" name="phone" id="phone" placeholder="Your Phone">
                                         <label for="phone">Your Phone</label>
+                                        @error('phone')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" name="person" id="person">
-                                            <option value="" selected>Person</option>
-                                            <option value="1" {{$person == "1" ? 'selected':''}}>1 Person</option>
-                                            <option value="2" {{$person == "2" ? 'selected':''}}>2 Persons</option>
-                                            <option value="3" {{$person == "3" ? 'selected':''}}>3 Persons</option>
+                                        <select class="form-select @error ('person') is-invalid @enderror" name="person" id="person">
+                                            <option value="" selected>Number of Room</option>
+                                            <option value="1">1 Room</option>
+                                            <option value="2">2 Rooms</option>
+                                            <option value="3">3 Rooms</option>
                                         </select>
-                                        <label for="person">Select Person</label>
+                                        <!-- <label for="person">Select Person</label> -->
+                                        @error('person')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select">
+                                            <option selected>Adult</option>
+                                            <option value="1">Adult 1</option>
+                                            <option value="2">Adult 2</option>
+                                            <option value="3">Adult 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select">
+                                            <option selected>Child</option>
+                                            <option value="1">Child 1</option>
+                                            <option value="2">Child 2</option>
+                                            <option value="3">Child 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" value="{{ $date1 }}" name="date1" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
+                                        <input type="text" value="{{ $date1 }} {{old('date1')}}" name="date1" class="form-control @error ('date1') is-invalid @enderror datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
                                         <label for="checkin">Check In</label>
+                                        @error('date1')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date4" data-target-input="nearest">
-                                        <input type="text" value="{{ $date2 }}" name="date2" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
+                                        <input type="text" value="{{ $date2 }} {{old('date2')}}" name="date2" class="form-control @error ('date2') is-invalid @enderror datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
                                         <label for="checkout">Check Out</label>
+                                        @error('date2')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="room" name="room">
+                                        <select class="form-select @error ('room') is-invalid @enderror"  id="room" name="room">
                                             <option value="" selected>Choose Room</option>
                                             @foreach($room_names as $room_name)
-                                                <option value="{{$room_name->id}}" {{$room = $room_name->id ? 'selected':''}}>{{$room_name->name}}</option>
+                                                <option value="{{$room_name->id}} {{old('room')}}">{{$room_name->name}}</option>
                                             @endforeach   
                                         </select>
                                         <label for="room">Select A Room</label>
+                                        @error('room')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                         </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Special Request" name="message" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control @error ('message') is-invalid @enderror" value="{{old('message')}}" placeholder="Special Request" name="message" id="message" style="height: 100px"></textarea>
                                         <label for="message">Special Request</label>
+                                        @error('message')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -168,20 +215,3 @@
 
 @endsection
 
-@section('script')
-    <script>
-        $(document).ready(function(){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('#bookForm').on('submit',function(e){
-                e.preventDefault();
-                var formData = new FormData(this);
-                console.log(formData);
-            })
-        })
-    </script>
-@endsection
