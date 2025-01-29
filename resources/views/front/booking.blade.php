@@ -126,60 +126,66 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select @error ('person') is-invalid @enderror" name="person" id="person">
+                                        <select class="form-select @error ('qty') is-invalid @enderror" value=" {{old('qty')}}" name="qty" id="qty">
                                             <option value="" selected>Number of Room</option>
                                             <option value="1">1 Room</option>
                                             <option value="2">2 Rooms</option>
                                             <option value="3">3 Rooms</option>
                                         </select>
                                         <!-- <label for="person">Select Person</label> -->
-                                        @error('person')
+                                        @error('qty')
                                             <div class="invalid-feedback">{{ $message}} </div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select">
-                                            <option selected>Adult</option>
-                                            <option value="1">Adult 1</option>
-                                            <option value="2">Adult 2</option>
-                                            <option value="3">Adult 3</option>
+                                        <select class="form-select @error ('adult') is-invalid @enderror" value=" {{old('adult')}}" name="adult" id="adult">
+                                            <option value="" selected>Adult</option>
+                                            <option value="1" {{$adult == 1 ? 'selected':''}}>Adult 1</option>
+                                            <option value="2" {{$adult == 2 ? 'selected':''}}>Adult 2</option>
+                                            <option value="3" {{$adult == 3 ? 'selected':''}}>Adult 3</option>
                                         </select>
+                                        @error('adult')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select">
-                                            <option selected>Child</option>
-                                            <option value="1">Child 1</option>
-                                            <option value="2">Child 2</option>
-                                            <option value="3">Child 3</option>
+                                        <select class="form-select @error ('child') is-invalid @enderror" value="{{old('child')}}" name="child" id="child">
+                                            <option value="0" {{$child == 0 ? 'selected':''}} selected>Child</option>
+                                            <option value="1" {{$child == 1 ? 'selected':''}}>Child 1</option>
+                                            <option value="2" {{$child == 2 ? 'selected':''}}>Child 2</option>
+                                            <option value="3" {{$child == 3 ? 'selected':''}}>Child 3</option>
                                         </select>
+                                        @error('child')
+                                            <div class="invalid-feedback">{{ $message}} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6">
-                                    <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" value="{{ $date1 }} {{old('date1')}}" name="date1" class="form-control @error ('date1') is-invalid @enderror datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
+                                    <div class="form-floating date" id="checkin" data-target-input="nearest">
+                                        <input type="text" value="{{ $checkin }} {{old('checkin')}}" name="checkin" class="form-control @error ('checkin') is-invalid @enderror datetimepicker-input" id="checkin" placeholder="Check In" data-target="#checkin" data-toggle="datetimepicker" />
                                         <label for="checkin">Check In</label>
-                                        @error('date1')
+                                        @error('checkin')
                                             <div class="invalid-feedback">{{ $message}} </div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-floating date" id="date4" data-target-input="nearest">
-                                        <input type="text" value="{{ $date2 }} {{old('date2')}}" name="date2" class="form-control @error ('date2') is-invalid @enderror datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
+                                    <div class="form-floating date" id="checkout" data-target-input="nearest">
+                                        <input type="text" value="{{ $checkout }} {{old('checkout')}}" name="checkout" class="form-control @error ('checkout') is-invalid @enderror datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#checkout" data-toggle="datetimepicker" />
                                         <label for="checkout">Check Out</label>
-                                        @error('date2')
+                                        @error('checkout')
                                             <div class="invalid-feedback">{{ $message}} </div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <select class="form-select @error ('room') is-invalid @enderror"  id="room" name="room">
+                                        <select class="form-select @error ('room') is-invalid @enderror" value=" {{old('room')}}" id="room" name="room">
                                             <option value="" selected>Choose Room</option>
                                             @foreach($room_names as $room_name)
                                                 <option value="{{$room_name->id}} {{old('room')}}">{{$room_name->name}}</option>

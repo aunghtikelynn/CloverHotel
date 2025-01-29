@@ -23,8 +23,8 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>From Date</th>
-                            <th>To Date</th>
+                            <th>Check In</th>
+                            <th>Check Out</th>
                             <th>Qty</th>
                             <th>Total</th>
                             <th>Payment Slip</th>
@@ -38,8 +38,8 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>From Date</th>
-                            <th>To Date</th>
+                            <th>Check In</th>
+                            <th>Check Out</th>
                             <th>Qty</th>
                             <th>Total</th>
                             <th>Payment Slip</th>
@@ -57,8 +57,8 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$book->name}}</td>
                                 <td>{{$book->phone}}</td>
-                                <td>{{$book->from_date}}</td>
-                                <td>{{$book->to_date}}</td>
+                                <td>{{$book->check_in}}</td>
+                                <td>{{$book->check_out}}</td>
                                 <td>{{$book->qty}}</td>
                                 <td>{{$book->total}}</td>
                                 <td><img src="{{$book->payment_slip}}" alt="" width="50"></td>

@@ -18,14 +18,18 @@ class BookFactory extends Factory
     {
         return [
             'name'=>$this->faker->word,
+            'email'=>$this->faker->word,
             'phone'=>$this->faker->phoneNumber,
-            'from_date'=>$this->faker->date,
-            'to_date'=>$this->faker->date,
-            'qty'=>$this->faker->numberBetween(1, 3),
+            'adult'=>$this->faker->word,
+            'child'=>$this->faker->word,
+            'check_in'=>$this->faker->date,
+            'check_out'=>$this->faker->date,
+            'qty'=>rand(1,3),
             'total'=>$this->faker->numberBetween(300000, 900000),
             'payment_slip'=>$this->faker->imageUrl,
-            'room_id'=>rand(1, 20),
-            'payment_id'=>rand(1, 5)
+            'room_id'=>rand(1, 5),
+            'payment_id'=>rand(1, 5),
+            'message'=>$this->faker->word,
         ];
     }
 }

@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email');
             $table->string('phone');
-            $table->string('from_date');
-            $table->string('to_date');
+            $table->string('adult');
+            $table->string('child');
+            $table->string('check_in');
+            $table->string('check_out');
             $table->string('qty');
             $table->string('total');
             $table->string('payment_slip');
@@ -30,6 +33,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('payments')
                 ->onDelete('cascade');
+            $table->string('message');
             $table->softDeletes();
             $table->timestamps();
         });

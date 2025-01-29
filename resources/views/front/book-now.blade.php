@@ -12,19 +12,19 @@
                 <p>Room :</p>
             </div>
             <div class="col-6">
-                <p></p>
+                <p>{{$room_name->name}}</p>
             </div>
             <div class="col-6">
-                <p>Room Type :</p>
+                <p>Qty :</p>
             </div>
             <div class="col-6">
-                <p></p>
+                <p>{{$qty}}</p>
             </div>
             <div class="col-6">
                 <p>Price :</p>
             </div>
             <div class="col-6">
-                <p></p>
+                <p>{{$room_name->price * $qty}}</p>
             </div>
             <div class="col-md-6">
                 <label for="payment_slip" >Payment Slip :</label>

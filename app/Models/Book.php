@@ -14,14 +14,18 @@ class Book extends Model
     protected $table = 'books';
     protected $fillable = [
         'name',
+        'email',
         'phone',
-        'from_date',
-        'to_date',
+        'adult',
+        'child',
+        'check_in',
+        'check_out',
         'qty',
         'total',
         'payment_slip',
         'room_id',
-        'payment_id'
+        'payment_id',
+        'message'
     ];
 
     public function room(){

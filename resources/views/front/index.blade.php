@@ -52,29 +52,28 @@
                             <div class="row g-2">
                                 <div class="col-md-3">
                                     <div class="date"data-target-input="nearest">
-                                        <input type="text" id="date1" name="date1"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
+                                        <input type="text" id="checkin" name="checkin"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#checkin" data-toggle="datetimepicker" />
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="date" data-target-input="nearest">
-                                        <input type="text" id="date2" name="date2" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
+                                        <input type="text" id="checkout" name="checkout" class="form-control datetimepicker-input" placeholder="Check out" data-target="#checkout" data-toggle="datetimepicker"/>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-select" name="person">
-                                        <option value="" selected>Person</option>
-                                        <option value="1">1 Person</option>
-                                        <option value="2">2 Persons</option>
-                                        <option value="3">3 Persons</option>
+                                    <select class="form-select" name="adult">
+                                        <option value="" selected>Adult</option>
+                                        <option value="1">Adult 1</option>
+                                        <option value="2">Adult 2</option>
+                                        <option value="3">Adult 3</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-select " name="room">
-                                        <option value="" selected>Room</option>
-                                        @foreach($room_names as $room_name)
-                                            <option value="{{$room_name->id}}">{{$room_name->name}}</option>
-                                        @endforeach
-                                        
+                                <select class="form-select" name="child">
+                                        <option value="0" selected>Child</option>
+                                        <option value="1">Child 1</option>
+                                        <option value="2">Child 2</option>
+                                        <option value="3">Child 3</option>
                                     </select>
                                 </div>
                             </div>

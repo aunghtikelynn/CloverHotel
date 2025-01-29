@@ -65,11 +65,11 @@ class FrontController extends Controller
         $room_names = Room::all();
         // dd($request);
         //var_dump($request);
-        $date1 = $request->query('date1') ?? null;
-        $date2 = $request->query('date2') ?? null;
-        $person = $request->query('person') ?? null;
-        $room = $request->query('room') ?? null;
-        return view('front.booking',compact('room_names','date1','date2','person','room'));
+        $checkin = $request->query('checkin') ?? null;
+        $checkout = $request->query('checkout') ?? null;
+        $adult = $request->query('adult') ?? null;
+        $child = $request->query('child') ?? 0;
+        return view('front.booking',compact('room_names','checkin','checkout','adult','child'));
     }
 
     public function bookNow(BookNowRequest $request)
@@ -81,15 +81,38 @@ class FrontController extends Controller
         $name = $request->input('name');
         $phone = $request->input('phone');
         $email = $request->input('email');
-        $person = $request->input('person');
-        $date1 = Carbon::parse($request->input('date1'));
-        $date2 = Carbon::parse($request->input('date2'));
+        $qty = $request->input('qty');
+        $adult = $request->input('adult');
+        $child = $request->input('child');
+        $checkin = Carbon::parse($request->input('checkin'));
+        $checkout = Carbon::parse($request->input('checkout'));
         $room = $request->input('room');
         $message = $request->input('message');
 
+        $room_name = Room::find($room);
 
+        $existingBooking = Book::where('room_id',$room)
+            ->where(function($query) use($checkin, $checkout){
+                $query->whereBetween('check_in',[$checkin, $checkout])
+                    ->orWhereBetween('check_out',[$checkin, $checkout])
+                    ->orWhere(function ($query) use ($checkin, $checkout){
+                        $query->where('check_in', '<', $checkin)
+                            ->where('check_out', '>', $checkout);
+                    });
+            })
+            ->count();
 
-
-        return view('front.book-now',compact('payments','data'));
+        if($existingBooking < 2){
+            return view('front.book-now',compact('payments','room_name','qty'));
+            // return response()->json([
+            //     'redirect_url' => '/book-now'
+            // ], 200);
+        }else{
+            // return response()->json([
+            //     'alert' => 'Out of Booking, Please choose another room'
+            // ], 400);
+            alert('Out of Booking, Please choose another room');
+        }
+        
     }
 }
