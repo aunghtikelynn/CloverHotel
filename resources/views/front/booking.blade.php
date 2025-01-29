@@ -94,7 +94,6 @@
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
                         <form action="{{route('bookNow')}}" method="post" id="bookForm" enctype="multipart/form-data">
                             @csrf
-                           
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
@@ -207,7 +206,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" id="book-now" type="submit">Book Now</button>
+                                    <button class="btn btn-primary w-100 py-3" id="book-now" type="submit">Booking</button>
                                 </div>
                             </div>
                         </form>
