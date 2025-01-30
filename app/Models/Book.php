@@ -13,6 +13,7 @@ class Book extends Model
     use SoftDeletes;
     protected $table = 'books';
     protected $fillable = [
+        'booking_no',
         'name',
         'email',
         'phone',
@@ -25,7 +26,8 @@ class Book extends Model
         'payment_slip',
         'room_id',
         'payment_id',
-        'message'
+        'message',
+        'status'
     ];
 
     public function room(){

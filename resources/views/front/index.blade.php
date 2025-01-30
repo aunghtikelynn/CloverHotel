@@ -52,7 +52,7 @@
                             <div class="row g-2">
                                 <div class="col-md-3">
                                     <div class="date"data-target-input="nearest">
-                                        <input type="text" id="checkin" name="checkin"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#checkin" data-toggle="datetimepicker" />
+                                        <input type="text" id="checkin" name="checkin"  class="form-control datetimepicker-input" placeholder="Check in" data-target="#checkin" data-toggle="datetimepicker" /> 
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -437,7 +437,5 @@
             </div>
         </div>
         <!-- Team End -->
-
-
 @endsection
         

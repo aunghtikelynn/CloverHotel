@@ -32,7 +32,7 @@
                     <p>: {{$room_name->price * $qty}} MMK</p>
                 </div>
             </div>
-            <form action="{{route('')}}" method="post" enctype="multipart/form-data">  
+            <form action="{{route('bookSuccessful')}}" method="post" enctype="multipart/form-data">  
             @csrf  
                 <div class="row">
                     <div class="col-md-3 mt-3 offset-3">
@@ -44,14 +44,26 @@
                         <select name="payment_method" id="payment_method" class="form-control">
                             <option value="" select>Choose Payment Method</option>
                             @foreach($payments as $payment)
-                                <option value="{{$payment->id}}">{{$payment->name}}</option>
+                                <option value="{{$payment->id}}">{{$payment->logo}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+                <div>
+                    <input type="hidden" name="name" value="{{$name}}">
+                    <input type="hidden" name="phone" value="{{$phone}}">
+                    <input type="hidden" name="email" value="{{$email}}">
+                    <input type="hidden" name="adult" value="{{$adult}}">
+                    <input type="hidden" name="child" value="{{$child}}">
+                    <input type="hidden" name="room" value="{{$room}}">
+                    <input type="hidden" name="qty" value="{{$qty}}">
+                    <input type="hidden" name="checkin" value="{{$checkin}}">
+                    <input type="hidden" name="checkout" value="{{$checkout}}">
+                    <input type="hidden" name="message" value="{{$message}}">
+                </div>
                 
                 <div class="col-6 offset-3 mt-3">
-                    <button class="btn btn-primary w-100 py-3" id="book-now" type="submit">Book Now</button>
+                    <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                 </div>
             </form>
             

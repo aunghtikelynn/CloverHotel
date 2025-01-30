@@ -11,9 +11,10 @@ Route::get('/room-detail/{id}',[App\Http\Controllers\FrontController::class, 'ro
 Route::get('/contact',[App\Http\Controllers\FrontController::class, 'contact'])->name('contact');
 Route::get('/team',[App\Http\Controllers\FrontController::class, 'team'])->name('team');
 Route::get('/testimonial',[App\Http\Controllers\FrontController::class, 'testimonial'])->name('testimonial');
-Route::get('/booking',[App\Http\Controllers\FrontController::class, 'booking'])->name('booking');
 
+Route::get('/booking',[App\Http\Controllers\FrontController::class, 'booking'])->name('booking');
 Route::post('/book-now',[App\Http\Controllers\FrontController::class,'bookNow'])->name('bookNow');
+Route::post('/book-successful',[App\Http\Controllers\FrontController::class, 'bookSuccessful'])->name('bookSuccessful');
 
 Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');

@@ -91,6 +91,7 @@ class FrontController extends Controller
 
         $room_name = Room::find($room);
 
+        // dd($name);
         $existingBooking = Book::where('room_id',$room)
             ->where(function($query) use($checkin, $checkout){
                 $query->whereBetween('check_in',[$checkin, $checkout])
@@ -103,7 +104,7 @@ class FrontController extends Controller
             ->count();
 
         if($existingBooking < 2){
-            return view('front.book-now',compact('payments','room_name','qty'));
+            return view('front.book-now',compact('payments','name','phone','email','adult','child','checkin','checkout','room','room_name','qty','message'));
             // return response()->json([
             //     'redirect_url' => '/book-now'
             // ], 200);
@@ -114,6 +115,42 @@ class FrontController extends Controller
             alert('Out of Booking, Please choose another room');
         }
         
+    }
+
+    public function bookSuccessful(Request $request)
+    {
+        // dd($request);
+
+        $room = $request->input('room');
+        $rooms = Room::find($room);
+
+        $booking_no = time();
+
+        $file_name = time().'.'.$request->payment_slip->extension();
+        $upload = $request->payment_slip->move(public_path('images/payment-slips/'),$file_name);
+
+
+        $books = Book::create([
+            'booking_no' => $booking_no,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'adult' => $request->adult,
+            'child' => $request->child,
+            'check_in' => $request->checkin,
+            'check_out' => $request->checkout,
+            'qty' => $request->qty,
+            'total' => $request->qty * $rooms->price,
+            'payment_slip' => '/images/payment_slips/'.$file_name,
+            'room_id' => $request->room,
+            'payment_id' => $request->payment_method,
+            'message' => $request->message,
+            'status' => 'Pending',
+        ]);
+        $books->save();
+
+        return view('front.book-successful',compact('books'));
+
     }
 
 }

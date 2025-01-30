@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->string('booking_no');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
@@ -34,6 +35,7 @@ return new class extends Migration
                 ->on('payments')
                 ->onDelete('cascade');
             $table->string('message');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });

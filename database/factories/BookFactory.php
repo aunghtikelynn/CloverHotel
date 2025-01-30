@@ -17,6 +17,7 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
+            'booking_no'=>$this->faker->ean8,
             'name'=>$this->faker->word,
             'email'=>$this->faker->word,
             'phone'=>$this->faker->phoneNumber,
@@ -30,6 +31,7 @@ class BookFactory extends Factory
             'room_id'=>rand(1, 5),
             'payment_id'=>rand(1, 5),
             'message'=>$this->faker->word,
+            'status' => $this->faker->word,
         ];
     }
 }
