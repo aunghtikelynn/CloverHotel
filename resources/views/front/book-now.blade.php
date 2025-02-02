@@ -6,7 +6,7 @@
                 <img src="{{asset('front-assets/img/Kpay QR.jpg')}}" alt="" width="200">
             </div>
             <div class="col-12 text-center">
-                <p class="text-success">Your booking is avaliable.</p>
+                <p class="text-success">Your Booking is Avaliable.</p>
             </div>
             <div class="row">
                 <div class="col-3 offset-3">
@@ -32,19 +32,40 @@
                     <p>: {{$room_name->price * $qty}} MMK</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <hr>
+                </div>
+            </div>
+            
             <form action="{{route('bookSuccessful')}}" method="post" enctype="multipart/form-data">  
             @csrf  
                 <div class="row">
-                    <div class="col-md-3 mt-3 offset-3">
+                    <div class="form-check col-2 offset-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="cashCheckbox">
+                        <label class="form-check-label" for="cash">Cash</label>
+                    </div>
+                    <div class="form-check col-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="transferCheckbox">
+                        <label class="form-check-label" for="transfer">Transfer</label>
+                    </div>
+                </div>
+                <div class="row" id="cashBox">
+                    <div class="col-6 offset-3 mt-3">
+                        <p class="text-success">You can pay by cash, when you check in.</p>
+                    </div>
+                </div>
+                <div class="row" id="transferBox">
+                    <div class="col-md-3 mt-3 offset-3 d-inline-block">
                         <label for="payment_slip" >Payment Slip :</label>
                         <input type="file" name="payment_slip" id="payment_slip" class="form-control">
                     </div>
-                    <div class="col-md-3 mt-3">
+                    <div class="col-md-3 mt-3 d-inline-block">
                         <label for="payment_method">Payment Method :</label>
                         <select name="payment_method" id="payment_method" class="form-control">
                             <option value="" select>Choose Payment Method</option>
                             @foreach($payments as $payment)
-                                <option value="{{$payment->id}}">{{$payment->logo}}</option>
+                                <option value="{{$payment->id}}">{{$payment->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -61,7 +82,6 @@
                     <input type="hidden" name="checkout" value="{{$checkout}}">
                     <input type="hidden" name="message" value="{{$message}}">
                 </div>
-                
                 <div class="col-6 offset-3 mt-3">
                     <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                 </div>
@@ -69,4 +89,38 @@
             
         </div>
     </div>
+@endsection
+@section('script')
+
+<script>
+    $(document).ready(function(){
+        // စက္ကန့်ပိုင်း transferBox နဲ့ cashBox ကို ဖျောက်ထားပါ
+        $('#transferBox').hide();
+        $('#cashBox').hide();
+
+        // Cash checkbox ကို check လုပ်ရင် cashBox ကိုပြမယ်၊ transferBox ကိုဖျောက်မယ်
+        $('#cashCheckbox').change(function() {
+            if ($(this).is(':checked')) {
+                $('#cashBox').show();
+                $('#transferBox').hide();
+                $('#transferCheckbox').prop('checked', false);
+            } else {
+                $('#cashBox').hide();
+            }
+        });
+
+        // Transfer checkbox ကို check လုပ်ရင် transferBox ကိုပြမယ်၊ cashBox ကိုဖျောက်မယ်
+        $('#transferCheckbox').change(function() {
+            if ($(this).is(':checked')) {
+                $('#transferBox').show();
+                $('#cashBox').hide();
+                $('#cashCheckbox').prop('checked', false);
+            } else {
+                $('#transferBox').hide();
+            }
+        });
+    })
+    
+</script>
+
 @endsection

@@ -105,14 +105,9 @@ class FrontController extends Controller
 
         if($existingBooking < 2){
             return view('front.book-now',compact('payments','name','phone','email','adult','child','checkin','checkout','room','room_name','qty','message'));
-            // return response()->json([
-            //     'redirect_url' => '/book-now'
-            // ], 200);
-        }else{
-            // return response()->json([
-            //     'alert' => 'Out of Booking, Please choose another room'
-            // ], 400);
-            alert('Out of Booking, Please choose another room');
+        }else {
+            return redirect()->route('front.booking');
+            
         }
         
     }
@@ -123,12 +118,20 @@ class FrontController extends Controller
 
         $room = $request->input('room');
         $rooms = Room::find($room);
+        $type_id = $rooms->type_id;
+        $type = Type::find($type_id);
 
         $booking_no = time();
 
-        $file_name = time().'.'.$request->payment_slip->extension();
-        $upload = $request->payment_slip->move(public_path('images/payment-slips/'),$file_name);
+        if ($request->hasFile('payment_slip')) {
+            $file_name = time().'.'.$request->payment_slip->extension();
+            $upload = $request->payment_slip->move(public_path('images/payment-slips/'), $file_name);
+            $payment_slip = "/images/payment-slips/".$file_name;
+        } else {
+            $payment_slip = null;
+        }
 
+        $payment_method = $request->payment_method ?? null;
 
         $books = Book::create([
             'booking_no' => $booking_no,
@@ -141,15 +144,15 @@ class FrontController extends Controller
             'check_out' => $request->checkout,
             'qty' => $request->qty,
             'total' => $request->qty * $rooms->price,
-            'payment_slip' => '/images/payment_slips/'.$file_name,
+            'payment_slip' => $payment_slip,
             'room_id' => $request->room,
-            'payment_id' => $request->payment_method,
+            'payment_id' => $payment_method,
             'message' => $request->message,
             'status' => 'Pending',
         ]);
         $books->save();
 
-        return view('front.book-successful',compact('books'));
+        return view('front.book-successful',compact('books','rooms','type'));
 
     }
 

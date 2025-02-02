@@ -20,6 +20,6 @@ class CheckUserRole
         if(Auth::check() && in_array(Auth::user()->role, $roles)){
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/backend');
     }
 }

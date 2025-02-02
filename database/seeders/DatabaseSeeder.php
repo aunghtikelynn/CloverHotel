@@ -22,11 +22,15 @@ class DatabaseSeeder extends Seeder
         Type::factory(2)->create();
         Room::factory(5)->create();
         Payment::factory(5)->create();
-        Book::factory(20)->create();
+        Book::factory(2)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'phone' => 'test@example.com',
-        // ]);
+        User::create([
+            'name' => 'Super Admin',
+            'phone' => '09876145278',
+            'profile' => '/images/profiles/sa.png',
+            'email' => 'superadmin@gmail.com',
+            'password' => Hash::make('123456789'),
+            'role' => 'Super Admin',
+        ]);
     }
 }
