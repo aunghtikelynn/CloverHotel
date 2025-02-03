@@ -123,6 +123,17 @@ class FrontController extends Controller
 
         $booking_no = time();
 
+        $cash = $request->input('cash');
+        $transfer = $request->input('transfer');
+
+        $payment_type = null;
+
+        if(is_null($cash) && !is_null($transfer)){
+            $payment_type = $transfer;
+        }else{
+            $payment_type = $cash;
+        }
+
         if ($request->hasFile('payment_slip')) {
             $file_name = time().'.'.$request->payment_slip->extension();
             $upload = $request->payment_slip->move(public_path('images/payment-slips/'), $file_name);
@@ -144,6 +155,7 @@ class FrontController extends Controller
             'check_out' => $request->checkout,
             'qty' => $request->qty,
             'total' => $request->qty * $rooms->price,
+            'payment_type' => $payment_type,
             'payment_slip' => $payment_slip,
             'room_id' => $request->room,
             'payment_id' => $payment_method,

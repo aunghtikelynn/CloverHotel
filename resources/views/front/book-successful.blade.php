@@ -122,7 +122,7 @@
         </div>
         <div class="row">
             <div class="col-1 offset-2">
-                <a href="/index"><button type="button" class="btn btn-outline-warning">OK</button></a>
+                <a href="/"><button type="button" class="btn btn-outline-warning">OK</button></a>
             </div>
             <div class="col-2">
                 <button type="button" class="btn btn-outline-warning">Print Preview</button>

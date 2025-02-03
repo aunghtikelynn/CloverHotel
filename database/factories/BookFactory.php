@@ -27,6 +27,7 @@ class BookFactory extends Factory
             'check_out'=>$this->faker->date,
             'qty'=>rand(1,3),
             'total'=>$this->faker->numberBetween(300000, 900000),
+            'payment_type'=>$this->faker->word,
             'payment_slip'=>$this->faker->imageUrl,
             'room_id'=>rand(1, 5),
             'payment_id'=>rand(1, 5),

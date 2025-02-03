@@ -17,5 +17,10 @@ class BookController extends Controller
         return view('admin.books.index',compact('books'));
     }
 
-    
+    public function bookDetail($id)
+    {
+        dd($id);
+        // $book = Book::find($id);
+        // return view('admin.books.detail',compact('book'));
+    }
 }

@@ -42,11 +42,11 @@
             @csrf  
                 <div class="row">
                     <div class="form-check col-2 offset-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="cashCheckbox">
+                        <input class="form-check-input" type="radio" name="cash" value="cash" id="cashCheckbox">
                         <label class="form-check-label" for="cash">Cash</label>
                     </div>
                     <div class="form-check col-2">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="transferCheckbox">
+                        <input class="form-check-input" type="radio" name="transfer" value="transfer" id="transferCheckbox">
                         <label class="form-check-label" for="transfer">Transfer</label>
                     </div>
                 </div>

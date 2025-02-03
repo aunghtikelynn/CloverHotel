@@ -23,13 +23,14 @@ return new class extends Migration
             $table->string('check_out');
             $table->string('qty');
             $table->string('total');
-            $table->string('payment_slip');
+            $table->string('payment_type');
+            $table->string('payment_slip')->nullable();
             $table->unsignedBigInteger('room_id');
             $table->foreign('room_id')
                 ->references('id')
                 ->on('rooms')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('payment_id');
+            $table->unsignedBigInteger('payment_id')->nullable();
             $table->foreign('payment_id')
                 ->references('id')
                 ->on('payments')

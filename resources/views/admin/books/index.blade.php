@@ -25,7 +25,8 @@
                             <th>Check In</th>
                             <th>Check Out</th>
                             <th>Room</th>
-                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Payment Type</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -37,7 +38,8 @@
                             <th>Check In</th>
                             <th>Check Out</th>
                             <th>Room</th>
-                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Payment Type</th>
                             <th>#</th>
                         </tr>
                     </tfoot>
@@ -53,9 +55,10 @@
                                 <td>{{$book->check_in}}</td>
                                 <td>{{$book->check_out}}</td>
                                 <td>{{$book->room->name}}</td>
-                                <td><img src="{{$book->payment->logo}}" alt="" width="50"></td>
+                                <td>{{$book->status}}</td>
+                                <td>{{$book->payment_type}}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-info">Detail</a>
+                                    <a href="{{route('backend.books.detail','$book->id')}}" class="btn btn-sm btn-info">Detail</a>
                                 </td>
                             </tr>
                         @endforeach

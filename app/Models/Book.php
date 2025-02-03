@@ -23,6 +23,7 @@ class Book extends Model
         'check_out',
         'qty',
         'total',
+        'payment_type',
         'payment_slip',
         'room_id',
         'payment_id',
