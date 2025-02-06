@@ -100,7 +100,7 @@
                     <span>Payments</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('backend.books.index')}}">
+                <a class="nav-link" href="{{route('backend.books')}}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Books</span></a>
             </li>

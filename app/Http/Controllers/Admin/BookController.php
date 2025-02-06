@@ -8,19 +8,16 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function books()
     {
-        $books = Book::orderBy('id','DESC')->paginate(15);
+        $books = Book::all();
         return view('admin.books.index',compact('books'));
     }
 
     public function bookDetail($id)
     {
-        dd($id);
-        // $book = Book::find($id);
-        // return view('admin.books.detail',compact('book'));
+        // dd($id);
+        $book = Book::find($id);
+        return view('admin.books.detail',compact('book'));
     }
 }

@@ -55,16 +55,25 @@
                                 <td>{{$book->check_in}}</td>
                                 <td>{{$book->check_out}}</td>
                                 <td>{{$book->room->name}}</td>
-                                <td>{{$book->status}}</td>
+                                <td>
+                                    <span class="badge
+                                    @if($book->status == 'Pending')
+                                        {{'text-bg-secondary'}}
+                                    @elseif($book->status == 'Accept')
+                                        {{'text-bg-primary'}}
+                                    @else
+                                        {{'text-bg-success'}}
+                                    @endif
+                                    ">{{$book->status}}</span>
+                                </td>
                                 <td>{{$book->payment_type}}</td>
                                 <td>
-                                    <a href="{{route('backend.books.detail','$book->id')}}" class="btn btn-sm btn-info">Detail</a>
+                                    <a href="{{route('backend.books.detail', $book->id)}}" class="btn btn-sm btn-info">Detail</a>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{$books->links()}}
             </div>
         </div>
     </div>

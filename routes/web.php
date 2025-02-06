@@ -25,7 +25,7 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::resource('payments',App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('users',App\Http\Controllers\Admin\UserController::class);
 
-    Route::resource('books',App\Http\Controllers\Admin\BookController::class);
+    Route::get('books',[App\Http\Controllers\Admin\BookController::class,'books'])->name('books');
     Route::get('books/{id}',[App\Http\Controllers\Admin\BookController::class,'bookDetail'])->name('books.detail');
     
 });
