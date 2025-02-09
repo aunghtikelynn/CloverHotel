@@ -3,12 +3,22 @@
     <div class="container-fluid px-4">
         <div class="my-3">
             <h1 class="mt-4">Books</h1>
+            <div class="mt-4 d-inline">
+                
+            </div>
             
+            <a href="{{route('backend.bookComplete')}}" class="btn btn-success float-end">Book Complete List</a>
+            <a href="{{route('backend.bookAccept')}}" class="btn btn-primary float-end mx-3">Book Accept List</a>
+            <a href="{{route('backend.books')}}" class="btn btn-secondary float-end">Book List</a>
         </div>
-        <ol class="breadcrumb mb-4 py-2">
-            <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Books</li>
-        </ol>
+
+        <div class="">
+            <ol class="breadcrumb mb-4 py-2">
+                <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
+                <li class="breadcrumb-item active">Books</li>
+            </ol>
+        </div>
+        
         
         <div class="card mb-4">
             <div class="card-header">
@@ -47,7 +57,7 @@
                         @php 
                             $i = 1;
                         @endphp
-                        @foreach($books as $book)
+                        @foreach($book_data as $book)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$book->booking_no}}</td>

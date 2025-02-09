@@ -19,6 +19,7 @@ class PaymentFactory extends Factory
         return [
             'name'=>$this->faker->word,
             'logo'=>$this->faker->imageUrl,
+            'acc_no'=>$this->faker->numberBetween(300000, 900000),
         ];
     }
 }

@@ -1,14 +1,11 @@
 @extends('layouts.front')
 @section('content')
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 text-center">
-                <img src="{{asset('front-assets/img/Kpay QR.jpg')}}" alt="" width="200">
+        <div class="row ">
+            <div class="col-6 offset-3">
+                <p class="text-success fs-5">Your Booking is Avaliable.</p>
             </div>
-            <div class="col-12 text-center">
-                <p class="text-success">Your Booking is Avaliable.</p>
-            </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-3 offset-3">
                     <p>Room</p>
                 </div>
@@ -56,18 +53,31 @@
                     </div>
                 </div>
                 <div class="row" id="transferBox">
-                    <div class="col-md-3 mt-3 offset-3 d-inline-block">
-                        <label for="payment_slip" >Payment Slip :</label>
-                        <input type="file" name="payment_slip" id="payment_slip" class="form-control">
-                    </div>
-                    <div class="col-md-3 mt-3 d-inline-block">
+                    <div class="col-md-6 mt-3 offset-3 d-inline-block">
                         <label for="payment_method">Payment Method :</label>
                         <select name="payment_method" id="payment_method" class="form-control">
                             <option value="" select>Choose Payment Method</option>
                             @foreach($payments as $payment)
-                                <option value="{{$payment->id}}">{{$payment->name}}</option>
+                                <option value="{{$payment->id}}" data-id="{{$payment->id}}">{{$payment->name}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="col-md-6 mt-3 offset-3 d-inline-block">
+                        <fieldset disabled>
+                            <div class="mb-3">
+                                <label for="account_no" class="form-label">Account No</label>
+                                <select id="account_no" name="account_no" class="form-select">
+                                <option value="" select></option>
+                                @foreach($payments as $payment)
+                                    <option value="{{$payment->id}}" data-id="{{$payment->id}}">{{$payment->acc_no}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-6 mt-3 offset-3 d-inline-block">
+                        <label for="payment_slip" >Payment Slip :</label>
+                        <input type="file" name="payment_slip" id="payment_slip" class="form-control">
                     </div>
                 </div>
                 <div>
@@ -118,6 +128,20 @@
             } else {
                 $('#transferBox').hide();
             }
+        });
+
+        // When an option is selected in the first select
+        $('#payment_method').change(function() {
+            // Get the selected option's data-id
+            var selectedId = $(this).find('option:selected').data('id');
+
+            // Find and select the corresponding option in the second select
+            $('#account_no').find('option').each(function() {
+                if ($(this).data('id') == selectedId) {
+                    $(this).prop('selected', true);
+                    return false; // Exit the loop
+                }
+            });
         });
     })
     

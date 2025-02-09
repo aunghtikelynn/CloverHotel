@@ -13,6 +13,7 @@ class Payment extends Model
     protected $table = 'payments';
     protected $fillable = [
         'name',
-        'logo'
+        'logo',
+        'acc_no'
     ];
 }

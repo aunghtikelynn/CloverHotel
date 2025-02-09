@@ -26,7 +26,11 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::resource('users',App\Http\Controllers\Admin\UserController::class);
 
     Route::get('books',[App\Http\Controllers\Admin\BookController::class,'books'])->name('books');
+    Route::get('bookAccept',[App\Http\Controllers\Admin\BookController::class,'bookAccept'])->name('bookAccept');
+    Route::get('bookComplete',[App\Http\Controllers\Admin\BookController::class,'bookComplete'])->name('bookComplete');
+    Route::put('books/{id}',[App\Http\Controllers\Admin\BookController::class,'status'])->name('books.status');
     Route::get('books/{id}',[App\Http\Controllers\Admin\BookController::class,'bookDetail'])->name('books.detail');
+
     
 });
 
