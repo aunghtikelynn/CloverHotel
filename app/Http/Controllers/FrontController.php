@@ -165,6 +165,10 @@ class FrontController extends Controller
         $books->save();
 
         return view('front.book-successful',compact('books','rooms','type'));
+    }
+
+    public function printPdf()
+    {
 
     }
 

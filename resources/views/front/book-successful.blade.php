@@ -125,7 +125,7 @@
                 <a href="/"><button type="button" class="btn btn-outline-warning">OK</button></a>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-outline-warning">Print Preview</button>
+                <a href="{{url('print-pdf')}}"><button type="button" class="btn btn-outline-warning">Print Preview</button></a>
             </div>
         </div>
         
