@@ -16,7 +16,7 @@ Route::get('/booking',[App\Http\Controllers\FrontController::class, 'booking'])-
 Route::post('/book-now',[App\Http\Controllers\FrontController::class,'bookNow'])->name('bookNow');
 Route::post('/book-successful',[App\Http\Controllers\FrontController::class, 'bookSuccessful'])->name('bookSuccessful');
 
-Route::get('print-pdf',[App\Http\Controllers\FrontController::class, 'printPdf'])->name('printPdf');
+Route::post('print-pdf',[App\Http\Controllers\FrontController::class, 'printPdf'])->name('printPdf');
 
 Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');

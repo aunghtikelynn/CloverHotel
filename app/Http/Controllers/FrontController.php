@@ -167,9 +167,12 @@ class FrontController extends Controller
         return view('front.book-successful',compact('books','rooms','type'));
     }
 
-    public function printPdf()
+    public function printPdf(Request $request)
     {
+        $name = $request->input('name');
+        $adult = $request->input('adult');
 
+        dd($request);
     }
 
 }

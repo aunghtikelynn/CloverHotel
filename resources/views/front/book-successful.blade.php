@@ -125,11 +125,40 @@
                 <a href="/"><button type="button" class="btn btn-outline-warning">OK</button></a>
             </div>
             <div class="col-2">
-                <a href="{{url('print-pdf')}}"><button type="button" class="btn btn-outline-warning">Print Preview</button></a>
+                <a href="{{url('print-pdf')}}"><button type="button" class="btn btn-outline-warning voucher" data-name="{{$books->name}}" data-adult="{{$books->adult}}">Print Preview</button></a>
             </div>
         </div>
         
     </div>
 </div>
+
+@endsection
+
+@section('script')
+
+<script>
+    $(document).ready(function){
+        $(.voucher).click(function(){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var name = $(this).data('name');
+            var adult = $(this).data('adult');
+
+            $.ajax({
+                type: 'POST',
+                url: "{{route('printPdf')}}"
+                data:{
+                    name: name,
+                    adult: adult,
+                }
+            })
+        })
+    }
+</script>
 
 @endsection
