@@ -21,6 +21,14 @@
         </div>
         <div class="row">
             <div class="col-4 offset-2">
+                <p>Bookking No</p>
+            </div>
+            <div class="col-4">
+                <p>: {{$books->booking_no}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 offset-2">
                 <p>Number of Adults (>13 Yrs)</p>
             </div>
             <div class="col-4">
@@ -49,6 +57,34 @@
             </div>
             <div class="col-4">
                 <p>: {{$books->check_out}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 offset-2">
+                <p>Qty</p>
+            </div>
+            <div class="col-4">
+                <p>: {{$books->qty}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 offset-2">
+                <p>Total</p>
+            </div>
+            <div class="col-4">
+                <p>: {{$books->total}} MMK</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 offset-2">
+                <p>Option</p>
+            </div>
+            <div class="col-4">
+                @if($books->payment_type == 'transfer')
+                    <p>: Paid</p>
+                @else
+                    <p>: No Paid</p>
+                @endif
             </div>
         </div>
         <div class="row">
@@ -125,7 +161,7 @@
                 <a href="/"><button type="button" class="btn btn-outline-warning">OK</button></a>
             </div>
             <div class="col-2">
-                <a href="{{url('print-pdf')}}"><button type="button" class="btn btn-outline-warning voucher" data-name="{{$books->name}}" data-adult="{{$books->adult}}">Print Preview</button></a>
+                <a href="{{ route('printPdf', $books->booking_no) }}"><button class="btn btn-outline-warning voucher">Print Preview</button></a>
             </div>
         </div>
         
@@ -136,10 +172,11 @@
 
 @section('script')
 
-<script>
+<!-- <script>
     $(document).ready(function){
         $(.voucher).click(function(){
 
+            alert('ok'),
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -159,6 +196,6 @@
             })
         })
     }
-</script>
+</script> -->
 
 @endsection

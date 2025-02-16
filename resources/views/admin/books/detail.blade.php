@@ -82,7 +82,11 @@
                                 <p>Payment Method</p>
                             </div>
                             <div class="col-6  border">
-                                <p class="text-end">{{$book->payment->name}}</p>
+                                @if(isset($book->payment_id) && !empty($book->payment_id))
+                                    <p class="text-end">{{$book->payment->name}}</p>
+                                @else
+                                    <p class="text-end"></p>
+                                @endif
                             </div>
                             <div class="col-6  border">
                                 <p>Message</p>
@@ -127,20 +131,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="row px-2">
-                    <div class="col-3 border">
-                        <p>Account No</p>
-                    </div>
-                    <div class="col-9 border">
-                        <p class="text-center">{{$book->payment->acc_no}}</p>
-                    </div>
-                </div>
-                <div class="row px-2">
-                    <div class="border">
-                        <div class="offset-md-4 col-md-4 my-2">
-                            <img src="{{$book->payment_slip}}" alt="" class="img-fluid">
+                @if(isset($book->payment_id) && !empty($book->payment_id))
+                    <div class="row px-2">
+                        <div class="col-3 border">
+                            <p>Account No</p>
+                        </div>
+                        <div class="col-9 border">
+                            <p class="text-center">{{$book->payment->acc_no}}</p>
                         </div>
                     </div>
+                @else
+                    <div></div>
+                @endif
+                <div class="row px-2">
+                    @if(isset($book->payment_id) && !empty($book->payment_id))
+                        <div class="border">
+                            <div class="offset-md-4 col-md-4 my-2">
+                                    <img src="{{$book->payment_slip}}" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    @else
+                        <div></div>
+                    @endif
                     <form action="{{route('backend.books.status',$book->id)}}" class="d-grid gap-2 my-5" method="post">
                     @csrf 
                     @method('put')

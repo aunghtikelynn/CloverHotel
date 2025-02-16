@@ -187,7 +187,7 @@
                                         <select class="form-select @error ('room') is-invalid @enderror" value=" {{old('room')}}" id="room" name="room">
                                             <option value="" selected>Choose Room</option>
                                             @foreach($room_names as $room_name)
-                                                <option value="{{$room_name->id}} {{old('room')}}">{{$room_name->name}}</option>
+                                                <option value="{{$room_name->id}} {{old('room')}}" {{$room == $room_name->id ? 'selected':''}}>{{$room_name->name}}</option>
                                             @endforeach   
                                         </select>
                                         <label for="room">Select A Room</label>

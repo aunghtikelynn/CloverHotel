@@ -104,7 +104,10 @@
                             <p class="text-body mb-3">{{ Str::limit($room->description, 100, '...') }}</p>
                             <div class="d-flex justify-content-between">
                                 <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{route('room-detail', $room->id)}}">View Detail</a>
-                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
+                                <form action="{{route('booking')}}" method="get" enctype="multipart/form-data">
+                                    <input type="hidden" name="room" value="{{$room->id}}">
+                                    <button type="submit" class="btn btn-dark">Book Now</button>
+                                </form>
                             </div>
                         </div>
                     </div>

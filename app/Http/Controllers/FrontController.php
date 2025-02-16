@@ -10,6 +10,7 @@ use App\Models\Book;
 use Carbon\Carbon;
 use App\Http\Requests\BookingRequest;
 use App\Http\Requests\BookNowRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -42,7 +43,9 @@ class FrontController extends Controller
     public function roomDetail($id)
     {
         $room = Room::find($id);
-        return view('front.room-detail',compact('room'));
+        $type_id = $room->type_id;
+        $related_room = Room::where('type_id',$type_id)->where('id','!=',$id)->orderBy('id','DESC')->limit(3)->get();
+        return view('front.room-detail',compact('room','related_room'));
     }
 
     public function contact()
@@ -65,11 +68,15 @@ class FrontController extends Controller
         $room_names = Room::all();
         // dd($request);
         //var_dump($request);
+        $room = $request->query('room') ?? null;
+
         $checkin = $request->query('checkin') ?? null;
         $checkout = $request->query('checkout') ?? null;
         $adult = $request->query('adult') ?? null;
         $child = $request->query('child') ?? 0;
-        return view('front.booking',compact('room_names','checkin','checkout','adult','child'));
+
+
+        return view('front.booking',compact('room_names','checkin','checkout','adult','child','room'));
     }
 
     public function bookNow(BookNowRequest $request)
@@ -167,12 +174,32 @@ class FrontController extends Controller
         return view('front.book-successful',compact('books','rooms','type'));
     }
 
-    public function printPdf(Request $request)
+    public function printPdf($booking)
     {
-        $name = $request->input('name');
-        $adult = $request->input('adult');
+    // echo "PDF";die();
+    // dd($booking);
+    $book = Book::where('booking_no',$booking)->first();
 
-        dd($request);
+    $rooms = $book->room_id;
+    $room = Room::find($rooms);
+    $types = $room->type_id;
+    $type = Type::find($types);
+    
+    $data = [
+        'name' => $book->name,
+        'booking_no' => $book->booking_no,
+        'adult' => $book->adult,
+        'child' => $book->child,
+        'check_in' => $book->check_in,
+        'check_out' => $book->check_out,
+        'qty' => $book->qty,
+        'total' => $book->total,
+        'payment_type' => $book->payment_type,
+        'room' => $room,
+        'type' => $type,
+
+    ];
+    $pdf = PDF::loadView('front.print-pdf', $data);
+    return $pdf->download('Clover Hotel Voucher.pdf');
     }
-
 }
