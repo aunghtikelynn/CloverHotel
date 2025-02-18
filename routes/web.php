@@ -32,6 +32,7 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::get('bookComplete',[App\Http\Controllers\Admin\BookController::class,'bookComplete'])->name('bookComplete');
     Route::put('books/{id}',[App\Http\Controllers\Admin\BookController::class,'status'])->name('books.status');
     Route::get('books/{id}',[App\Http\Controllers\Admin\BookController::class,'bookDetail'])->name('books.detail');
+    Route::get('print-pdf/{id?}',[App\Http\Controllers\Admin\BookController::class, 'printPdf'])->name('printPdf');
 
     
 });

@@ -153,17 +153,27 @@
                     @else
                         <div></div>
                     @endif
-                    <form action="{{route('backend.books.status',$book->id)}}" class="d-grid gap-2 my-5" method="post">
-                    @csrf 
-                    @method('put')
-                        @if($book->status == 'Pending')
-                        <input type="hidden" name="status" value="Accept">
-                        <button class="btn btn-primary" type="submit">Book Accept</button>
+                    
+                    @if($book->status == 'Complete')
+                        <a href="{{route('backend.printPdf',$book->id)}}"><button class="btn btn-warning my-5" type="submit">Download Voucher</button></a>
+
                     @else
-                        <input type="hidden" name="status" value="Complete">
-                        <button class="btn btn-success" type="submit">Book Complete</button>
+                        <form action="{{route('backend.books.status',$book->id)}}" class="d-grid gap-2 my-5" method="post">
+                        @csrf 
+                        @method('put')
+                            @if($book->status == 'Pending')
+                            <input type="hidden" name="status" value="Accept">
+                            <button class="btn btn-primary" type="submit">Book Accept</button>
+                        @elseif($book->status == "Accept")
+                            <input type="hidden" name="status" value="Complete">
+                            <button class="btn btn-success" type="submit">Book Complete</button>
+                        @else
+                            <div></div>
+                        @endif
+                        </form>
                     @endif
-                    </form>
+                    
+                    
                 </div>
             </div>
         </div>

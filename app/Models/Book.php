@@ -35,6 +35,10 @@ class Book extends Model
         return $this->belongsTo(Room::class);
     }
 
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
+
     public function payment(){
         return $this->belongsTo(Payment::class);
     }

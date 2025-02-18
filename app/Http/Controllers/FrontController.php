@@ -119,10 +119,11 @@ class FrontController extends Controller
         
     }
 
-    public function bookSuccessful(Request $request)
+    public function bookSuccessful(BookingRequest $request)
     {
         // dd($request);
-
+        
+        
         $room = $request->input('room');
         $rooms = Room::find($room);
         $type_id = $rooms->type_id;

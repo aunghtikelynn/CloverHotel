@@ -22,10 +22,10 @@ class BookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date1' => 'required',
-            'date2' => 'required',
-            'person' => 'required',
-            'room' => 'required',
+            'cash' => 'nullable|required_without:transfer',
+            'transfer' => 'nullable|required_without:cash',
+            'paymentMethodDetails' => 'required_if:transfer,true',
+            'paymentSlip' => 'required_if:transfer,true|file',
         ];
     }
 }
