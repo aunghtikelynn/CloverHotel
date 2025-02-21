@@ -24,6 +24,7 @@ class PaymentUpdateRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'acc_no'=>'required',
         ];
     }
 }

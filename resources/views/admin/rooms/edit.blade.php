@@ -138,6 +138,20 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="bed" class="form-label fw-bold">Bed</label>
+                    <input type="text" class="form-control @error('bed') is-invalid @enderror" value="{{$room->bed}}" id="bed" name="bed">
+                    @error('bed')
+                        <div class="invalid-feedback">{{ $message}} </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="bath" class="form-label fw-bold">Bath</label>
+                    <input type="text" class="form-control @error('bath') is-invalid @enderror" value="{{$room->bath}}" id="bath" name="bath">
+                    @error('bath')
+                        <div class="invalid-feedback">{{ $message}} </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="type" class="form-label fw-bold">Type</label>
                     <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror">
                         <option value="" selected>Choose Type</option>

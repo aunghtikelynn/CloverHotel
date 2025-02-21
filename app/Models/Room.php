@@ -18,6 +18,8 @@ class Room extends Model
         'image_2',
         'image_3',
         'image_4',
+        'bed',
+        'bath',
         'type_id',	
         'description',
         'price',

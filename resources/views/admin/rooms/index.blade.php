@@ -24,9 +24,8 @@
                             <th>Name</th>
                             <th>Image</th>
                             <th>Image_1</th>
-                            <th>Image_2</th>
-                            <th>Image_3</th>
-                            <th>Image_4</th>
+                            <th>Bed</th>
+                            <th>Bath</th>
                             <th>Type</th>
                             <th>Price</th>
                             <th>#</th>
@@ -38,9 +37,8 @@
                             <th>Name</th>
                             <th>Image</th>
                             <th>Image_1</th>
-                            <th>Image_2</th>
-                            <th>Image_3</th>
-                            <th>Image_4</th>
+                            <th>Bed</th>
+                            <th>Bath</th>
                             <th>Type</th>
                             <th>Price</th>
                             <th>#</th>
@@ -56,9 +54,8 @@
                                 <td>{{$room->name}}</td>
                                 <td><img src="{{$room->image}}" alt="" width="100"></td>
                                 <td><img src="{{$room->image_1}}" alt="" width="100"></td>
-                                <td><img src="{{$room->image_2}}" alt="" width="100"></td>
-                                <td><img src="{{$room->image_3}}" alt="" width="100"></td>
-                                <td><img src="{{$room->image_4}}" alt="" width="100"></td>
+                                <td>{{$room->bed}}</td>
+                                <td>{{$room->bath}}</td>
                                 <td>{{$room->type->name}}</td>
                                 <td>{{$room->price}}</td>
                                 <td>

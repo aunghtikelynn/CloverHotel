@@ -24,6 +24,8 @@ class RoomUpdateRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'bed'=>'required',
+            'bath'=>'required',
             'type_id'=>'required',	
             'description'=>'required',
             'price'=>'required',

@@ -23,6 +23,7 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Logo</th>
+                            <th>Account No</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Logo</th>
+                            <th>Account No</th>
                             <th>#</th>
                         </tr>
                     </tfoot>
@@ -43,6 +45,7 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$payment->name}}</td>
                                 <td><img src="{{$payment->logo}}" alt="" width="100"></td>
+                                <td>{{$payment->acc_no}}</td>
                                 <td>
                                     <a href="{{route('backend.payments.edit',$payment->id)}}" class="btn btn-sm btn-warning">Edit</a>
                                     <button class="btn btn-sm btn-danger delete" data-id="{{$payment->id}}">Delete</button>

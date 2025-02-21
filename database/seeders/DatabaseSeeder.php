@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Type::factory(2)->create();
-        Room::factory(5)->create();
-        Payment::factory(5)->create();
-        Book::factory(2)->create();
+        // Type::factory(2)->create();
+        // Room::factory(5)->create();
+        // Payment::factory(5)->create();
+        // Book::factory(2)->create();
 
         User::create([
             'name' => 'Super Admin',

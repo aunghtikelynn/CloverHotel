@@ -25,6 +25,7 @@ class PaymentRequest extends FormRequest
         return [
             'name'=>'required',
             'logo'=>'required',File::image(),
+            'acc_no'=>'required',
         ];
     }
 }

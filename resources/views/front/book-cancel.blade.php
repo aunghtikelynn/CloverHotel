@@ -21,7 +21,7 @@
                         <input type="hidden" name="message" value="{{$message}}">
                     </div>
                     <div class="col-6 offset-3 mt-3">
-                        <button class="btn btn-primary w-100 py-3" type="submit">OK</button>
+                        <button class="btn btn-primary py-3" type="submit">OK</button>
                     </div>
                 </form>
 

@@ -29,6 +29,8 @@ class RoomRequest extends FormRequest
             'image_2'=>'required',File::image(),
             'image_3'=>'required',File::image(),
             'image_4'=>'required',File::image(),
+            'bed'=>'required',
+            'bath'=>'required',
             'type_id'=>'required',	
             'description'=>'required',
             'price'=>'required',

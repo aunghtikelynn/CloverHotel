@@ -33,6 +33,13 @@
                         <div class="invalid-feedback">{{ $message}} </div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="acc_no" class="form-label fw-bold">Account No</label>
+                    <input type="text" class="form-control @error('acc_no') is-invalid @enderror" value="{{old('acc_no')}}" id="acc_no" name="acc_no">
+                    @error('acc_no')
+                        <div class="invalid-feedback">{{ $message}} </div>
+                    @enderror
+                </div>
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary" type="submit">Create</button>
                 </div>

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('image_2');
             $table->string('image_3');
             $table->string('image_4');
+            $table->string('bed');
+            $table->string('bath');
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')
                 ->references('id')
