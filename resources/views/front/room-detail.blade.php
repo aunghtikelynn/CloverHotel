@@ -67,7 +67,7 @@
     <!-- Booking End -->
 
     <div class="container-fluid">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xl-6 col-12 p-3 text-center">
                 <img src="{{$room->image}}" alt="" width="650" class="img-fluid rounded">
             </div>
@@ -87,6 +87,24 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{$room->image}}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{$room->image1}}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
         <div class="row justify-content-center">
             <div class="p-4 mt-2 text-center">

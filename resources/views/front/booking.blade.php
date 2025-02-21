@@ -97,7 +97,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" name="name"  id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $name }} {{old('name')}}" name="name"  id="name" placeholder="Your Name">
                                         <label for="name">Your Name</label>
                                         @error('name')
                                             <div class="invalid-feedback">{{ $message}} </div>
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control @error ('email') is-invalid @enderror" value="{{old('email')}}" name="email" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control @error ('email') is-invalid @enderror" value=" {{ $email }} {{old('email')}}" name="email" id="email" placeholder="Your Email">
                                         <label for="email">Your Email</label>
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message}} </div>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control @error ('phone') is-invalid @enderror" value="{{old('phone')}}" name="phone" id="phone" placeholder="Your Phone">
+                                        <input type="text" class="form-control @error ('phone') is-invalid @enderror" value="{{ $phone }} {{old('phone')}}" name="phone" id="phone" placeholder="Your Phone">
                                         <label for="phone">Your Phone</label>
                                         @error('phone')
                                             <div class="invalid-feedback">{{ $message}} </div>
@@ -127,9 +127,9 @@
                                     <div class="form-floating">
                                         <select class="form-select @error ('qty') is-invalid @enderror" value=" {{old('qty')}}" name="qty" id="qty">
                                             <option value="" selected>Number of Room</option>
-                                            <option value="1">1 Room</option>
-                                            <option value="2">2 Rooms</option>
-                                            <option value="3">3 Rooms</option>
+                                            <option value="1" {{$qty == 1 ? 'selected':''}}>1 Room</option>
+                                            <option value="2" {{$qty == 2 ? 'selected':''}}>2 Rooms</option>
+                                            <option value="3" {{$qty == 3 ? 'selected':''}}>3 Rooms</option>
                                         </select>
                                         <!-- <label for="person">Select Person</label> -->
                                         @error('qty')
@@ -198,7 +198,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control @error ('message') is-invalid @enderror" value="{{old('message')}}" placeholder="Special Request" name="message" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control @error ('message') is-invalid @enderror" value="{{ $message }} {{old('message')}}" placeholder="Special Request" name="message" id="message" style="height: 100px"></textarea>
                                         <label for="message">Special Request</label>
                                         @error('message')
                                             <div class="invalid-feedback">{{ $message}} </div>

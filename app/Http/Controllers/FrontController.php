@@ -69,6 +69,11 @@ class FrontController extends Controller
         // dd($request);
         //var_dump($request);
         $room = $request->query('room') ?? null;
+        $name = $request->input('name') ?? null ?? null;
+        $phone = $request->input('phone') ?? null;
+        $email = $request->input('email') ?? null;
+        $qty = $request->input('qty') ?? null;
+        $message = $request->input('message');
 
         $checkin = $request->query('checkin') ?? null;
         $checkout = $request->query('checkout') ?? null;
@@ -76,8 +81,10 @@ class FrontController extends Controller
         $child = $request->query('child') ?? 0;
 
 
-        return view('front.booking',compact('room_names','checkin','checkout','adult','child','room'));
+        return view('front.booking',compact('room_names','checkin','checkout','adult','child','room','name','email','phone','qty','message'));
     }
+
+    
 
     public function bookNow(BookNowRequest $request)
     {
@@ -96,7 +103,15 @@ class FrontController extends Controller
         $room = $request->input('room');
         $message = $request->input('message');
 
-        $room_name = Room::find($room);
+        $room_names = Room::find($room);
+
+
+
+        // Parse dates using Carbon
+        $checkIn = new \DateTime($request->input('checkin'));
+        $checkOut = new \DateTime($request->input('checkout'));
+        $interval = $checkIn->diff($checkOut);
+        $nights = $interval->days;
 
         // dd($name);
         $existingBooking = Book::where('room_id',$room)
@@ -110,11 +125,10 @@ class FrontController extends Controller
             })
             ->count();
 
-        if($existingBooking < 2){
-            return view('front.book-now',compact('payments','name','phone','email','adult','child','checkin','checkout','room','room_name','qty','message'));
+        if($existingBooking < 20){
+            return view('front.book-now',compact('payments','name','phone','email','adult','child','checkin','checkout','room','room_names','qty','message','nights'));
         }else {
-            return redirect()->route('front.booking');
-            
+            return view('front.book-cancel',compact('room','room_names','name','phone','email','adult','child','checkin','checkout','qty','message'));
         }
         
     }
@@ -152,6 +166,14 @@ class FrontController extends Controller
 
         $payment_method = $request->payment_method ?? null;
 
+        $checkIn = $request->input('checkin');
+        $checkOut = $request->input('checkout');
+
+        // Calculate the number of nights
+        $checkInDate = Carbon::parse($checkIn);
+        $checkOutDate = Carbon::parse($checkOut);
+        $nights = $checkOutDate->diffInDays($checkInDate);
+
         $books = Book::create([
             'booking_no' => $booking_no,
             'name' => $request->name,
@@ -162,7 +184,7 @@ class FrontController extends Controller
             'check_in' => $request->checkin,
             'check_out' => $request->checkout,
             'qty' => $request->qty,
-            'total' => $request->qty * $rooms->price,
+            'total' => $request->qty * $rooms->price * $nights,
             'payment_type' => $payment_type,
             'payment_slip' => $payment_slip,
             'room_id' => $request->room,

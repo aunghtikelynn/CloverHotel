@@ -14,6 +14,7 @@ Route::get('/testimonial',[App\Http\Controllers\FrontController::class, 'testimo
 
 Route::get('/booking',[App\Http\Controllers\FrontController::class, 'booking'])->name('booking');
 Route::post('/book-now',[App\Http\Controllers\FrontController::class,'bookNow'])->name('bookNow');
+Route::post('/book-cancel',[App\Http\Controllers\FrontController::class,'bookCancel'])->name('bookCancel');
 Route::post('/book-successful',[App\Http\Controllers\FrontController::class, 'bookSuccessful'])->name('bookSuccessful');
 
 Route::get('print-pdf/{booking?}',[App\Http\Controllers\FrontController::class, 'printPdf'])->name('printPdf');

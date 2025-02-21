@@ -10,7 +10,7 @@
                     <p>Room</p>
                 </div>
                 <div class="col-5">
-                    <p>: {{$room_name->name}}</p>
+                    <p>: {{$room_names->name}}</p>
                 </div>
             </div>
             <div class="row">
@@ -26,7 +26,7 @@
                     <p>Price</p>
                 </div>
                 <div class="col-3">
-                    <p>: {{$room_name->price * $qty}} MMK</p>
+                    <p>: {{$room_names->price * $qty * $nights}} MMK</p>
                 </div>
             </div>
             <div class="row">

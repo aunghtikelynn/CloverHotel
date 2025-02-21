@@ -162,14 +162,14 @@
                         @csrf 
                         @method('put')
                             @if($book->status == 'Pending')
-                            <input type="hidden" name="status" value="Accept">
-                            <button class="btn btn-primary" type="submit">Book Accept</button>
-                        @elseif($book->status == "Accept")
-                            <input type="hidden" name="status" value="Complete">
-                            <button class="btn btn-success" type="submit">Book Complete</button>
-                        @else
-                            <div></div>
-                        @endif
+                                <input type="hidden" name="status" value="Accept">
+                                <button class="btn btn-primary" type="submit">Book Accept</button>
+                            @elseif($book->status == "Accept")
+                                <input type="hidden" name="status" value="Complete">
+                                <button class="btn btn-success" type="submit">Book Complete</button>
+                            @else
+                                <div></div>
+                            @endif
                         </form>
                     @endif
                     
