@@ -161,8 +161,8 @@
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="room-item shadow rounded overflow-hidden">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="{{$room->image}}" alt="">
-                                    <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{$room->price}}/Night</small>
+                                    <img class="img-fluid w-100" src="{{$room->image}}" alt="">
+                                    <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{$room->price}} MMK /Night</small>
                                 </div>
                                 <div class="p-4 mt-2">
                                     <div class="d-flex justify-content-between mb-3">
@@ -176,8 +176,8 @@
                                         </div>
                                     </div>
                                     <div class="d-flex mb-3">
-                                        <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
-                                        <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                                        <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>{{$room->bed}} Bed</small>
+                                        <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>{{$room->bath}} Bath</small>
                                         <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
                                     </div>
                                     <p class="text-body mb-3">{{ Str::limit($room->description, 100, '...') }}</p>
