@@ -69,7 +69,7 @@
                                 <select id="account_no" name="account_no" class="form-select">
                                 <option value="" select></option>
                                 @foreach($payments as $payment)
-                                    <option value="{{$payment->id}}" data-id="{{$payment->id}}">{{$payment->acc_no}}</option>
+                                    <option value="{{$payment->id}}" data-id="{{$payment->id}}">{{$payment->acc_name}} - {{$payment->acc_no}}</option>
                                 @endforeach
                                 </select>
                             </div>

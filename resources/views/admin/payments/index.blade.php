@@ -23,6 +23,7 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Logo</th>
+                            <th>Acc Name</th>
                             <th>Account No</th>
                             <th>#</th>
                         </tr>
@@ -32,6 +33,7 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Logo</th>
+                            <th>Acc Name</th>
                             <th>Account No</th>
                             <th>#</th>
                         </tr>
@@ -45,6 +47,7 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$payment->name}}</td>
                                 <td><img src="{{$payment->logo}}" alt="" width="100"></td>
+                                <td>{{$payment->acc_name}}</td>
                                 <td>{{$payment->acc_no}}</td>
                                 <td>
                                     <a href="{{route('backend.payments.edit',$payment->id)}}" class="btn btn-sm btn-warning">Edit</a>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('logo');
+            $table->string('acc_name');
             $table->string('acc_no');
             $table->softDeletes();
             $table->timestamps();

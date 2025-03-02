@@ -14,6 +14,7 @@ class Payment extends Model
     protected $fillable = [
         'name',
         'logo',
+        'acc_name',
         'acc_no'
     ];
 }
